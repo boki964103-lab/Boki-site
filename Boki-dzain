@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<title>Boki Logo</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #00f2fe;
+  color: black;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #4facfe;
+  color: white;
+  transform: scale(1.1);
+}
+
+.menu, .section {
+  display: none;
+  margin-top: 40px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+}
+
+img {
+  max-width: 200px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.back {
+  background: crimson;
+  color: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🔥 Тавтай морил 🔥</h1>
+  <button onclick="showMenu()">🚀 Эхлэх</button>
+</div>
+
+<div class="menu" id="menu">
+  <h2>📋 Цэс</h2>
+  <button onclick="showSection(1)">🎨 Бэлэн лого</button>
+  <button onclick="showSection(2)">🛠️ Хийлгүүлэх</button>
+  <button onclick="showSection(3)">⚡ Чанар сайжруулах</button>
+  <button onclick="showSection(4)">💰 Trip</button>
+</div>
+
+<div class="section" id="section1">
+  <div class="card">
+    <h2>🎨 Бэлэн лого</h2>
+    <p>Энд дараа нь лого зураг нэмэж болно</p>
+  </div>
+  <button class="back" onclick="goBack()">⬅ Буцах</button>
+</div>
+
+<div class="section" id="section2">
+  <div class="card">
+    <h2>🛠️ Лого хийлгүүлэх</h2>
+    <p>Messenger / Discord-оор холбогдоно</p>
+  </div>
+  <button class="back" onclick="goBack()">⬅ Буцах</button>
+</div>
+
+<div class="section" id="section3">
+  <div class="card">
+    <h2>⚡ Чанар сайжруулах</h2>
+    
+    <input type="file" onchange="previewImage(event)">
+    <br>
+    <img id="preview">
+
+  </div>
+  <button class="back" onclick="goBack()">⬅ Буцах</button>
+</div>
+
+<div class="section" id="section4">
+  <div class="card">
+    <h2>💰 Төлбөр</h2>
+    <p>
+      🎨 Бэлэн лого: 5000₮<br>
+      🛠️ Хийлгүүлэх: 10000₮<br>
+      ⚡ Сайжруулах: 3000₮
+    </p>
+  </div>
+  <button class="back" onclick="goBack()">⬅ Буцах</button>
+</div>
+
+<script>
+function showMenu() {
+  document.querySelector(".container").style.display = "none";
+  document.getElementById("menu").style.display = "block";
+}
+
+function showSection(num) {
+  document.getElementById("menu").style.display = "none";
+  let sections = document.querySelectorAll(".section");
+  sections.forEach(sec => sec.style.display = "none");
+  document.getElementById("section" + num).style.display = "block";
+}
+
+function goBack() {
+  let sections = document.querySelectorAll(".section");
+  sections.forEach(sec => sec.style.display = "none");
+  document.getElementById("menu").style.display = "block";
+}
+
+function previewImage(event) {
+  const img = document.getElementById("preview");
+  img.src = URL.createObjectURL(event.target.files[0]);
+}
+</script>
+
+</body>
+</html>
